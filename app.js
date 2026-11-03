@@ -5,19 +5,6 @@
     filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     groups.forEach(group => { group.hidden = button.dataset.filter !== 'all' && group.dataset.group !== button.dataset.filter; });
   }));
-  const tabs = [...document.querySelectorAll('[data-panel]')];
-  function selectAnalysis(button) {
-    tabs.forEach(item => {
-      const selected = item === button;
-      item.setAttribute('aria-pressed', String(selected));
-      document.getElementById(item.dataset.panel).hidden = !selected;
-    });
-  }
-  tabs.forEach(button => {
-    button.setAttribute('aria-controls', button.dataset.panel);
-    button.addEventListener('click', () => selectAnalysis(button));
-  });
-  selectAnalysis(tabs[0]);
   const viewer = document.getElementById('viewer');
   const enlarged = document.getElementById('view-img');
   document.querySelectorAll('[data-zoom]').forEach(link => link.addEventListener('click', event => {
